@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Template;
+use App\Spam;
+
+class MainController extends Controller {
+	public function storeItem(Request $request) {
+		$data = new Template ();
+		$data->name = $request->name;
+		$data->subject = $request->subject;
+		$data->description = $request->description;
+		$data->save ();
+		return $data;
+	}
+	public function readItems() {
+		$data = Template::all ();
+		return $data;
+	}
+	public function readSpamItems() {
+		$data = Spam::pluck ('badwords');
+		return $data;
+	}
+	public function deleteItem(Request $request) {
+		$data = Template::find ( $request->id )->delete ();
+	}
+	public function editItem(Request $request, $id){
+		$data =Template::where('id', $id)->first();
+		$data->name = $request->get('val_1');
+		$data->subject = $request->get('val_2');
+		$data->description = $request->get('val_3');
+		$data->save();
+		return $data;
+	}
+}
