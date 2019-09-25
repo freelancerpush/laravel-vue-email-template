@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use App\Template;
 use App\Spam;
 
-class MainController extends Controller {
+class EmailTepmlateController extends Controller {
 	public function storeItem(Request $request) {
 		$data = new Template ();
 		$data->name = $request->name;
 		$data->subject = $request->subject;
 		$data->description = $request->description;
-		$data->save ();
+		$data->save();
 		return $data;
 	}
 	public function readItems() {
@@ -20,7 +20,7 @@ class MainController extends Controller {
 		return $data;
 	}
 	public function readSpamItems() {
-		$data = Spam::pluck ('badwords');
+		$data = Spam::pluck('badwords');
 		return $data;
 	}
 	public function deleteItem(Request $request) {
@@ -28,9 +28,9 @@ class MainController extends Controller {
 	}
 	public function editItem(Request $request, $id){
 		$data =Template::where('id', $id)->first();
-		$data->name = $request->get('val_1');
-		$data->subject = $request->get('val_2');
-		$data->description = $request->get('val_3');
+		$data->name = $request->get('val1');
+		$data->subject = $request->get('val2');
+		$data->description = $request->get('val3');
 		$data->save();
 		return $data;
 	}

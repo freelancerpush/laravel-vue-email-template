@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post ( '/vueitems', 'MainController@storeItem' );
-Route::get ( '/vuespamitems', 'MainController@readSpamItems' );
-Route::get ( '/vueitems', 'MainController@readItems' );
-Route::post ( '/vueitems/{id}', 'MainController@deleteItem' );
-Route::post ( '/edititems/{id}', 'MainController@editItem' );
+Route::post ( '/items', 'EmailTepmlateController@storeItem' );
+Route::get ( '/spam-items', 'EmailTepmlateController@readSpamItems' );
+Route::get ( '/items', 'EmailTepmlateController@readItems' );
+Route::post ( '/items/{id}', 'EmailTepmlateController@deleteItem' );
+Route::post ( '/edit-items/{id}', 'EmailTepmlateController@editItem' );

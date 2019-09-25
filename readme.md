@@ -13,3 +13,4 @@
 - php artisan db:seed.
 - Run.
 - php artisan key:generate
+- php artisan serve
